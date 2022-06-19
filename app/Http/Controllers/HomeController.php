@@ -11,15 +11,17 @@ use App\Models\SoldProduct;
 
 class HomeController extends Controller
 {
-    public function index(Product $product)
+    public function index(Product $product, SoldProduct $product_id)
     {
         $comments = Comment::latest()->paginate(3);
         $categories = Category::all();
         $products = DB::table('products')->orderBy('created_at', 'DESC')->paginate(4);
-
-
-        $popularProducts = DB::table('sold_products')->select()->where('product_id')->distinct()->get();
         
-        dd( view('home.index', compact('products', 'categories', 'comments', 'popularProducts')));
+        $popularProducts = Product::get()->sortByDesc(
+            function ($p) {
+            return $p->solds->sum('qty');
+        })->take(4);
+        
+            return view('home.index', compact('products', 'categories', 'comments', 'popularProducts', 'product_id'));  
     }
 }

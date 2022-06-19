@@ -23,15 +23,15 @@ class Product extends Model
     {
         return $this->hasMany('\App\Models\Comment');
     }
-
-    public function ratings()
-    {
-    return $this->hasMany(Rating::class);
-    }
     
     public function purchases()
     {
         return $this->belongsTo(Purchase::class);
+    }
+
+    public function solds()
+    {
+        return $this->hasMany('\App\Models\SoldProduct');
     }
 
     

@@ -85,16 +85,31 @@
 
     @foreach ($popularProducts as $product)
       
-    <div class="card">
-      <img class="card-img-top" src="/img/slide1.jpg" alt="Card image cap">
+    <a href="/product/{{$product->id}}" class="text-dark">
+      <div class="card" style="min-width:320px; max-width:320px; min-height:430px; max-height:430px">
+          <img class="img-fluid" src="/storage/app/public/uploads/{{$product->image}}" style="object-fit: cover; height: 200px; alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">{{ $product->name }}</h5>
-        <p class="card-text">{{ $product->description }}</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
+            <h5 class="card-title">{{Str::limit($product->name, 20)}}</h5>
+            <p class="card-text">{{Str::limit($product->description, 20)}}</p>
+            <form action="{{route('cart.store')}}" enctype="multipart/form-data" method="post">
+                @csrf
+                <input type="product_id" value="{{ $product->id }}" name="product_id" id="product_id" hidden>
+                <input type="number" value="1" name="quantity" hidden>
+                <input type="total" value="{{ $product->price }}" name="total" hidden>
+                @if (auth()->user() && auth()->user()->cart->contains('product_id', $product->id))
+                  <button class="btn btn-outline-danger mt-3" disabled>
+                    Dodato u korpi
+                  </button>
+                @else
+                <button class="btn btn-outline-primary mt-3" type="submit">Dodaj u korpi</button>
+                @endif
+              </form>
+        </div>
+            <div class="card-footer">
+              <small class="text-muted">{{$product->created_at}}</small>
+            </div>
+        </div>
+      </a>
     
     @endforeach
     

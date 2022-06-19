@@ -76,18 +76,7 @@
                     @endforeach
                   </div>
                 </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Vozila
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{route('vehicle')}}"><i class="fa fa-motorcycle"></i> Motorcikl</a>
-                    <a class="dropdown-item" href="{{route('vehicle')}}"><i class="fa fa-car"></i> Automobil</a>
-                    <a class="dropdown-item" href="{{route('vehicle')}}"><i class="fa fa-truck"></i> Kamion</a>
-                    <a class="dropdown-item" href="{{route('vehicle')}}"><i class="fa fa-bus"></i> Autobus</a>
-              
-                  </div>
-                </li>
+                
               
               </ul>
               <form class="form-inline my-2 my-lg-0" type="get" enctype="multipart/form-data" action="{{route('search_products')}}">
@@ -174,7 +163,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2020 Copyright:
-    <a class="text-white" href="">Lazar Mladenovic</a>
+    <a class="text-white" href="">Dimitrije Minic</a>
   </div>
   <!-- Copyright -->
 </footer>

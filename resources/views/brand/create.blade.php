@@ -9,7 +9,7 @@
 </div>
     <form action="{{route('store_brand')}}"  enctype="multipart/form-data" method="post">
         @csrf
-        <div class="row m-5">
+        <div class="row">
             
             <div class="col-8 offset-2">
                
